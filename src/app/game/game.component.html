@@ -1,1 +1,8 @@
-<div>In game</div>
+<div id="board" class="board">
+    <div
+      *ngFor="let card of deck; index as i"
+      id="card{{i}}" class="card"
+      [style.background-image]="card.isFlipped ? card.faceUrl : card.backUrl "
+    >
+    </div>
+</div>
