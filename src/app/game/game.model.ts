@@ -9,8 +9,6 @@ const CARD_BACK = 'alien';
 export class Game {
   score = 0;
   turnCount = 10;
-  flippedCardIndex = -1;
-  canFlip = true;
   maxPairsCount: 4 | 6 | 9 = 6;
   deck: Card[] = [];
 
@@ -19,14 +17,19 @@ export class Game {
   }
 
   createNewDeck = () => {
-    const singleCards = CARD_FACES.slice(0, this.maxPairsCount).map((face) => {
-        return {
-          faceUrl: `url("${face}.png")`,
-          backUrl: `url("${CARD_BACK}.png")`,
-          isFlipped: false
-        }
+    return [...this.createHalfDeck('first'), ...this.createHalfDeck('second')];
+  }
+
+  createHalfDeck(occurrence: 'first' | 'second'): Card[] {
+    return CARD_FACES.slice(0, this.maxPairsCount).map((face) => {
+      return {
+        faceUrl: `url("${face}.png")`,
+        backUrl: `url("${CARD_BACK}.png")`,
+        isFlipped: false,
+        id: `${face}-${occurrence}`,
+        isHidden: false,
+      }
     });
-    return [...singleCards, ...singleCards];
   }
 
   shuffleCards(deck: Card[]) {

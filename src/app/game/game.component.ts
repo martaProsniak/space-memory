@@ -22,4 +22,8 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     console.log('GameModel Component');
   }
+
+  flipCard(card: Card) {
+    this.gameService.flipCard(card);
+  }
 }

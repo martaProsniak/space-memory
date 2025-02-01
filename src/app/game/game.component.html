@@ -2,7 +2,10 @@
     <div
       *ngFor="let card of deck; index as i"
       id="card{{i}}" class="card"
-      [style.background-image]="card.isFlipped ? card.faceUrl : card.backUrl "
+      (click)="flipCard(card)"
+      [style.background-image]=
+        "card.isFlipped ? card.faceUrl : card.backUrl"
+      [style.visibility]="card.isHidden ? 'hidden' : 'visible'"
     >
     </div>
 </div>
