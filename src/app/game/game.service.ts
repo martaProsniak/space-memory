@@ -1,4 +1,4 @@
-import {Injectable, signal, Signal} from '@angular/core';
+import {Injectable, signal, Signal, WritableSignal} from '@angular/core';
 import {Game} from './game.model';
 import {Card} from './types';
 
@@ -6,25 +6,47 @@ import {Card} from './types';
   providedIn: 'root'
 })
 export class GameService {
-  private game: Game;
+  private game: Game | null = null;
   private firstFlippedCard: Card | null = null;
   private secondFlippedCard: Card | null = null;
-  deck: Card[] = [];
+  private deck: WritableSignal<Card[]> = signal([]);
+  score = signal(0);
+  turnCount = signal(0);
+  isBonusTurn = signal(false);
   canFlip = true;
+  gameStatus: WritableSignal<'pending' | 'fail' | 'win'> = signal('pending');
 
   constructor() {
+    this.startNewGame();
+  }
+
+  startNewGame() {
     this.game = new Game();
-    this.deck = this.getDeck();
+    this.deck.set(this.game.deck);
+    this.score.set(this.game.initialScore);
+    this.turnCount.set(10);
+    this.gameStatus.set('pending');
+    this.canFlip = true;
   }
 
   getDeck() {
-    return [...this.game.deck];
+    return this.deck.asReadonly();
+  }
+
+  getProgress() {
+    return {
+      score: this.score,
+      turnCount: this.turnCount,
+      hasBonusTurn: this.isBonusTurn,
+      gameStatus: this.gameStatus,
+    };
   }
 
   flipCard(card: Card) {
     if (!this.canFlip) {
       return;
     }
+
     if (card.id === this.firstFlippedCard?.id) {
       return;
     }
@@ -47,35 +69,36 @@ export class GameService {
     } else {
       this.handleNoMatch();
     }
-
   }
 
   handleMatch() {
-    console.log('Handle match')
     if (!this.firstFlippedCard || !this.secondFlippedCard) {
       return;
     }
     setTimeout(() => {
-      this.deck
+      this.deck()
         .filter(card => card.isFlipped)
         .forEach((card: Card) => {
           card.isHidden = true;
         })
+      this.score.update((score) => score + 1);
+      this.isBonusTurn.set(true);
       this.resetFlippedCards();
     }, 1000)
   }
 
   handleNoMatch() {
-    console.log('Handle no match')
     if (!this.firstFlippedCard || !this.secondFlippedCard) {
       return;
     }
     setTimeout(() => {
-      this.deck
+      this.deck()
         .filter(card => (card.isFlipped))
         .forEach((card: Card) => {
           card.isFlipped = false;
         })
+      this.turnCount.update((turnCount) => turnCount - 1);
+      this.isBonusTurn.set(false);
       this.resetFlippedCards();
     }, 1000)
   }
@@ -83,6 +106,26 @@ export class GameService {
   resetFlippedCards() {
     this.firstFlippedCard = null;
     this.secondFlippedCard = null;
-    this.canFlip = true;
+    this.checkResult();
+    this.canFlip = this.gameStatus() === 'pending';
+  }
+
+  hasLost() {
+    return this.turnCount() < 1 && this.score() < this.game!.maxPairsCount;
+  }
+
+  hasWin() {
+    return this.score() === this.game!.maxPairsCount;
+  }
+
+  checkResult() {
+    if (this.hasLost()) {
+      this.gameStatus.set('fail');
+      return;
+    }
+    if (this.hasWin()) {
+      this.gameStatus.set('win');
+      return;
+    }
   }
 }

@@ -7,13 +7,13 @@ const CARD_FACES = [
 const CARD_BACK = 'alien';
 
 export class Game {
-  score = 0;
-  turnCount = 10;
+  initialScore: number;
   maxPairsCount: 4 | 6 | 9 = 6;
   deck: Card[] = [];
 
   constructor() {
     this.deck = this.shuffleCards(this.createNewDeck());
+    this.initialScore = 0;
   }
 
   createNewDeck = () => {

@@ -1,6 +1,6 @@
 <div id="board" class="board">
     <div
-      *ngFor="let card of deck; index as i"
+      *ngFor="let card of deck(); index as i"
       id="card{{i}}" class="card"
       (click)="flipCard(card)"
       [style.background-image]=
@@ -9,3 +9,8 @@
     >
     </div>
 </div>
+<div>{{progress.score()}}</div>
+<div>{{progress.turnCount()}}</div>
+<div *ngIf="progress.hasBonusTurn()">Bonus turn!</div>
+<button (click)="restartGame()">Restart</button>
+<div>{{progress.gameStatus()}}</div>
