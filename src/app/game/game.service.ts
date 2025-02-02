@@ -24,9 +24,19 @@ export class GameService {
     this.game = new Game();
     this.deck.set(this.game.deck);
     this.score.set(this.game.initialScore);
-    this.turnCount.set(10);
+    this.turnCount.set(this.getTurnCount());
     this.gameStatus.set('pending');
     this.canFlip = true;
+  }
+
+  getTurnCount() {
+    if (this.game!.maxPairsCount === 4) {
+      return 8;
+    }
+    if (this.game!.maxPairsCount === 9) {
+      return 15;
+    }
+    return 10;
   }
 
   getDeck() {

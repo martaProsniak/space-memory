@@ -1,7 +1,7 @@
 import {Component, Signal, WritableSignal} from '@angular/core';
 import {GameService} from './game.service';
 import {Card} from './types';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-game',

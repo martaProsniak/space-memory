@@ -2,7 +2,13 @@
   display: grid;
   grid-template-columns: repeat(3, 33.33%);
   max-width: 25em;
-  margin: 4em auto;
+  margin: 0 auto;
+  -webkit-box-shadow: 1px 1px 10px 0 var(--color-blue);
+  -moz-box-shadow: 1px 1px 10px 0 var(--color-blue);
+  box-shadow: 1px 1px 10px 0 var(--color-blue);
+  border-radius: 10px;
+  background: #050505;
+  padding: 4px;
 }
 
 .card {

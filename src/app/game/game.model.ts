@@ -1,14 +1,14 @@
 import {Card} from './types';
 
 const CARD_FACES = [
-  'astronaut', 'blaster', 'earth', 'flag', 'moon', 'rocket', 'sun'
+  'astronaut', 'blaster', 'earth', 'moon', 'rocket', 'sun', 'observatory', 'saturn', 'ship', 'ufo'
 ]
 
 const CARD_BACK = 'alien';
 
 export class Game {
   initialScore: number;
-  maxPairsCount: 4 | 6 | 9 = 6;
+  maxPairsCount: 4 | 6 | 9 = 9;
   deck: Card[] = [];
 
   constructor() {
