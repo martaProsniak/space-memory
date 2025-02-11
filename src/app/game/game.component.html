@@ -1,4 +1,12 @@
-<div id="board" class="board">
+<div>
+  <div>{{progress.score()}}</div>
+  <div>{{progress.turnCount()}}</div>
+  <div *ngIf="progress.hasBonusTurn()">Bonus turn!</div>
+  <button (click)="restartGame()">Restart</button>
+  <div>{{progress.gameStatus()}}</div>
+</div>
+<div class="board-wrapper">
+  <div id="board" class="board border">
     <div
       *ngFor="let card of deck(); index as i"
       id="card{{i}}" class="card"
@@ -8,9 +16,5 @@
       [style.visibility]="card.isHidden ? 'hidden' : 'visible'"
     >
     </div>
+  </div>
 </div>
-<div>{{progress.score()}}</div>
-<div>{{progress.turnCount()}}</div>
-<div *ngIf="progress.hasBonusTurn()">Bonus turn!</div>
-<button (click)="restartGame()">Restart</button>
-<div>{{progress.gameStatus()}}</div>

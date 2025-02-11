@@ -1,23 +1,64 @@
+.board-wrapper {
+  height: 100dvh;
+}
+
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 33.33%);
-  max-width: 25em;
-  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: var(--board-row-height);
+  grid-gap: var(--board-gap);
+  justify-content: center;
+  width: clamp(3em, 80%, 16em);
+  margin: auto;
+  inset: 0;
+  position: fixed;
+  height: fit-content;
+  background: #050505;
+  padding: var(--board-gap);
+}
+
+.board:has(.card:nth-last-child(n + 12)) {
+  width: clamp(4em, 80%, 25em);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.board:has(.card:nth-last-child(n + 18)) {
+  --board-row-height: 3em;
+  --board-gap: 0.5em;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (min-width: 425px) {
+  .board {
+    --board-row-height: 4em;
+    --board-gap: 1em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .board {
+    --board-row-height: 5em;
+    --board-gap: 1em;
+  }
+  .board:has(.card:nth-last-child(n + 18)) {
+    --board-row-height: 3.5em;
+    --board-gap: 1em;
+  }
+}
+
+.border {
   -webkit-box-shadow: 1px 1px 10px 0 var(--color-blue);
   -moz-box-shadow: 1px 1px 10px 0 var(--color-blue);
   box-shadow: 1px 1px 10px 0 var(--color-blue);
   border-radius: 10px;
-  background: #050505;
-  padding: 4px;
 }
 
 .card {
-  height: 6em;
-  width: 6em;
+  height: 100%;
+  width: 100%;
   background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0.5rem auto;
+  background-size: contain;
+  background-position: center;
   transform: scale(1);
   transition: filter 0.5s ease-in-out, background-image 0.5s ease-in-out, transform 0.3s ease-in-out;
-  border-radius: 50%;
 }

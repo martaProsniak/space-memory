@@ -1,4 +1,4 @@
-import {Injectable, signal, Signal, WritableSignal} from '@angular/core';
+import {Injectable, signal, WritableSignal} from '@angular/core';
 import {Game} from './game.model';
 import {Card} from './types';
 
@@ -33,10 +33,10 @@ export class GameService {
     if (this.game!.maxPairsCount === 4) {
       return 8;
     }
-    if (this.game!.maxPairsCount === 9) {
-      return 15;
+    if (this.game!.maxPairsCount === 10) {
+      return 25;
     }
-    return 10;
+    return 15;
   }
 
   getDeck() {
