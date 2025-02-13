@@ -60,5 +60,5 @@
   background-size: contain;
   background-position: center;
   transform: scale(1);
-  transition: filter 0.5s ease-in-out, background-image 0.5s ease-in-out, transform 0.3s ease-in-out;
+  transition: background-image 0.3s ease-in-out, transform 0.3s ease-in-out;
 }

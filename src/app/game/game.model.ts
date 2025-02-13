@@ -1,4 +1,4 @@
-import {Card} from './types';
+import {Card, PairsCount} from './types';
 
 const CARD_FACES = [
   'astronaut', 'blaster', 'earth', 'moon', 'rocket', 'sun', 'observatory', 'saturn', 'ship', 'ufo', 'universe'
@@ -8,10 +8,11 @@ const CARD_BACK = 'alien';
 
 export class Game {
   initialScore: number;
-  maxPairsCount: 4 | 6 | 10 = 4;
+  maxPairsCount: PairsCount;
   deck: Card[] = [];
 
-  constructor() {
+  constructor(pairsCount: PairsCount = 6) {
+    this.maxPairsCount = pairsCount;
     this.deck = this.shuffleCards(this.createNewDeck());
     this.initialScore = 0;
   }

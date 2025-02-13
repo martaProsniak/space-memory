@@ -5,3 +5,5 @@ export interface Card {
   id: string;
   isHidden: boolean;
 }
+
+export type PairsCount = 4 | 6 | 10

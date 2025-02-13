@@ -1,6 +1,6 @@
 import {Injectable, signal, WritableSignal} from '@angular/core';
 import {Game} from './game.model';
-import {Card} from './types';
+import {Card, PairsCount} from './types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,8 @@ export class GameService {
   private firstFlippedCard: Card | null = null;
   private secondFlippedCard: Card | null = null;
   private deck: WritableSignal<Card[]> = signal([]);
+  private timeout = 750;
+  pairsCount: PairsCount = 6;
   score = signal(0);
   turnCount = signal(0);
   isBonusTurn = signal(false);
@@ -21,19 +23,20 @@ export class GameService {
   }
 
   startNewGame() {
-    this.game = new Game();
+    this.game = new Game(this.pairsCount);
     this.deck.set(this.game.deck);
     this.score.set(this.game.initialScore);
     this.turnCount.set(this.getTurnCount());
     this.gameStatus.set('pending');
+    this.isBonusTurn.set(false);
     this.canFlip = true;
   }
 
   getTurnCount() {
-    if (this.game!.maxPairsCount === 4) {
+    if (this.pairsCount === 4) {
       return 8;
     }
-    if (this.game!.maxPairsCount === 10) {
+    if (this.pairsCount === 10) {
       return 25;
     }
     return 15;
@@ -94,7 +97,7 @@ export class GameService {
       this.score.update((score) => score + 1);
       this.isBonusTurn.set(true);
       this.resetFlippedCards();
-    }, 1000)
+    }, this.timeout);
   }
 
   handleNoMatch() {
@@ -110,7 +113,7 @@ export class GameService {
       this.turnCount.update((turnCount) => turnCount - 1);
       this.isBonusTurn.set(false);
       this.resetFlippedCards();
-    }, 1000)
+    }, this.timeout);
   }
 
   resetFlippedCards() {
@@ -137,5 +140,14 @@ export class GameService {
       this.gameStatus.set('win');
       return;
     }
+  }
+
+  setPairsCount(count: PairsCount) {
+    this.pairsCount = count;
+    this.startNewGame();
+  }
+
+  getPairsCount() {
+    return this.pairsCount;
   }
 }
