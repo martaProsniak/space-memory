@@ -1,13 +1,16 @@
-import {Component, Signal, WritableSignal} from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import {GameService} from './game.service';
 import {Card} from './types';
-import {NgForOf, NgIf, NgOptimizedImage} from '@angular/common';
+import {NgForOf} from '@angular/common';
+import {ActionsComponent} from './actions/actions.component';
+import {ProgressComponent} from './progress/progress.component';
 
 @Component({
   selector: 'app-game',
   imports: [
     NgForOf,
-    NgIf,
+    ActionsComponent,
+    ProgressComponent,
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
@@ -23,9 +26,5 @@ export class GameComponent {
 
   flipCard(card: Card) {
     this.gameService.flipCard(card);
-  }
-
-  restartGame() {
-    this.gameService.startNewGame();
   }
 }

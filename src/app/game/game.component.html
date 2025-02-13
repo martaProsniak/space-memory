@@ -1,10 +1,5 @@
-<div>
-  <div>{{progress.score()}}</div>
-  <div>{{progress.turnCount()}}</div>
-  <div *ngIf="progress.hasBonusTurn()">Bonus turn!</div>
-  <button (click)="restartGame()">Restart</button>
-  <div>{{progress.gameStatus()}}</div>
-</div>
+<user-actions />
+<game-progress />
 <div class="board-wrapper">
   <div id="board" class="board border">
     <div
