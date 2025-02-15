@@ -94,8 +94,8 @@ export class GameService {
         .forEach((card: Card) => {
           card.isHidden = true;
         })
-      this.score.update((score) => score + 1);
       this.isBonusTurn.set(true);
+      this.increaseScore();
       this.resetFlippedCards();
     }, this.timeout);
   }
@@ -110,10 +110,15 @@ export class GameService {
         .forEach((card: Card) => {
           card.isFlipped = false;
         })
+      this.increaseScore();
       this.turnCount.update((turnCount) => turnCount - 1);
       this.isBonusTurn.set(false);
       this.resetFlippedCards();
     }, this.timeout);
+  }
+
+  increaseScore() {
+    this.score.update((score) => score + 1);
   }
 
   resetFlippedCards() {

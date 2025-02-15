@@ -11,7 +11,7 @@
   width: clamp(3em, 80%, 16em);
   margin: auto;
   inset: 0;
-  position: fixed;
+  /*position: fixed;*/
   height: fit-content;
   background: #050505;
   padding: var(--board-gap);
@@ -61,4 +61,17 @@
   background-position: center;
   transform: scale(1);
   transition: background-image 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.hud {
+  width: fit-content;
+  margin: auto;
+  padding: 1em;
+}
+
+main {
+  width: 90vw;
+  margin: auto;
+  position: fixed;
+  inset: 0;
 }

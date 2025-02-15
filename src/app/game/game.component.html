@@ -1,6 +1,7 @@
-<user-actions />
-<game-progress />
-<div class="board-wrapper">
+<main>
+  <section class="hud">
+    <game-progress />
+  </section>
   <div id="board" class="board border">
     <div
       *ngFor="let card of deck(); index as i"
@@ -12,4 +13,5 @@
     >
     </div>
   </div>
-</div>
+  <user-actions />
+</main>
