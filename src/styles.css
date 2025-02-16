@@ -1,7 +1,6 @@
 :root {
   --color-blue: #217a8a;
-  --board-gap: 0.5em;
-  --board-row-height: 3.5em;
+  --board-gap: 1em;
 }
 
 html,

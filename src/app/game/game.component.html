@@ -1,15 +1,27 @@
-<user-actions />
-<game-progress />
-<div class="board-wrapper">
-  <div id="board" class="board border">
-    <div
-      *ngFor="let card of deck(); index as i"
-      id="card{{i}}" class="card"
-      (click)="flipCard(card)"
-      [style.background-image]=
-        "card.isFlipped ? card.faceUrl : card.backUrl"
-      [style.visibility]="card.isHidden ? 'hidden' : 'visible'"
-    >
-    </div>
+<main>
+  <section class="hud">
+    <game-progress />
+  </section>
+  <div class="board-wrapper border">
+    @if (progress.gameStatus() === 'win') {
+      <p>You won</p>
+    }
+    @else if (progress.gameStatus() === 'fail') {
+      <p>You lost</p>
+    }
+    @else {
+      <div id="board" class="board">
+        <div
+          *ngFor="let card of deck(); index as i"
+          id="card{{i}}" class="card"
+          (click)="flipCard(card)"
+          [style.background-image]=
+            "card.isFlipped ? card.faceUrl : card.backUrl"
+          [style.visibility]="card.isHidden ? 'hidden' : 'visible'"
+        >
+        </div>
+      </div>
+    }
   </div>
-</div>
+  <user-actions />
+</main>

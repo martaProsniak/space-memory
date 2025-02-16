@@ -1,5 +1,6 @@
-<div>
-  <div>{{progress.score()}}</div>
-  <div>{{progress.turnCount()}}</div>
+<div class="progress">
+  <div>Score: {{progress.score()}}</div>
+  <div>Turns left: {{progress.turnCount()}}</div>
   <div *ngIf="progress.hasBonusTurn()">Bonus turn!</div>
+  <div>Status: {{progress.gameStatus()}}</div>
 </div>

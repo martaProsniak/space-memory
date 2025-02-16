@@ -12,6 +12,7 @@ export class GameService {
   private deck: WritableSignal<Card[]> = signal([]);
   private timeout = 750;
   pairsCount: PairsCount = 6;
+  private matchCount = 0;
   score = signal(0);
   turnCount = signal(0);
   isBonusTurn = signal(false);
@@ -94,8 +95,9 @@ export class GameService {
         .forEach((card: Card) => {
           card.isHidden = true;
         })
-      this.score.update((score) => score + 1);
       this.isBonusTurn.set(true);
+      this.increaseScore();
+      this.matchCount++;
       this.resetFlippedCards();
     }, this.timeout);
   }
@@ -110,10 +112,15 @@ export class GameService {
         .forEach((card: Card) => {
           card.isFlipped = false;
         })
+      this.increaseScore();
       this.turnCount.update((turnCount) => turnCount - 1);
       this.isBonusTurn.set(false);
       this.resetFlippedCards();
     }, this.timeout);
+  }
+
+  increaseScore() {
+    this.score.update((score) => score + 1);
   }
 
   resetFlippedCards() {
@@ -124,11 +131,11 @@ export class GameService {
   }
 
   hasLost() {
-    return this.turnCount() < 1 && this.score() < this.game!.maxPairsCount;
+    return this.turnCount() < 1 && this.matchCount < this.game!.maxPairsCount;
   }
 
   hasWin() {
-    return this.score() === this.game!.maxPairsCount;
+    return this.matchCount === this.game!.maxPairsCount;
   }
 
   checkResult() {
