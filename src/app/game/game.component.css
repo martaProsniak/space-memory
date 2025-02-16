@@ -3,12 +3,12 @@ main {
   width: clamp(3em, 80%, 20em);
   height: 100dvh;
   display: grid;
-  grid-template-rows: 15% 1fr 15%;
+  grid-template-rows: 20% 1fr 15%;
 }
 
 .board-wrapper {
   background: #050505;
-  padding: var(--board-gap);
+  padding: 1em;
 }
 
 .board {
@@ -29,6 +29,7 @@ main {
 
 .board:has(.card:nth-last-child(n + 18)) {
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   --board-gap: 0.5em;
 }
 

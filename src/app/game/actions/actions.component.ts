@@ -23,7 +23,7 @@ export class ActionsComponent implements OnInit {
     if (!pairCount) {
       return;
     }
-    this.pairsCount = Number.parseInt(pairCount) as PairsCount;
+    this.pairsCount = Number(pairCount) as PairsCount;
     this.gameService.setPairsCount(this.pairsCount);
   }
 

@@ -1,7 +1,7 @@
 import {Card, PairsCount} from './types';
 
 const CARD_FACES = [
-  'astronaut', 'blaster', 'earth', 'moon', 'rocket', 'sun', 'observatory', 'saturn', 'ship', 'ufo', 'universe'
+  'astronaut', 'blaster', 'earth', 'moon', 'rocket', 'sun', 'saturn', 'ship', 'ufo', 'universe'
 ]
 
 const CARD_BACK = 'alien';
@@ -15,6 +15,7 @@ export class Game {
     this.maxPairsCount = pairsCount;
     this.deck = this.shuffleCards(this.createNewDeck());
     this.initialScore = 0;
+    console.log(this.deck)
   }
 
   createNewDeck = () => {
@@ -22,6 +23,7 @@ export class Game {
   }
 
   createHalfDeck(occurrence: 'first' | 'second'): Card[] {
+    console.log(CARD_FACES.slice(0, this.maxPairsCount));
     return CARD_FACES.slice(0, this.maxPairsCount).map((face) => {
       return {
         faceUrl: `url("${face}.png")`,

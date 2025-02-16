@@ -2,6 +2,12 @@ import {Injectable, signal, WritableSignal} from '@angular/core';
 import {Game} from './game.model';
 import {Card, PairsCount} from './types';
 
+const DIFFICULTY: Record<PairsCount, string> = {
+  4: 'easy',
+  6: 'normal',
+  10: 'hard'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,13 +37,14 @@ export class GameService {
     this.gameStatus.set('pending');
     this.isBonusTurn.set(false);
     this.canFlip = true;
+    this.matchCount = 0;
   }
 
   getTurnCount() {
-    if (this.pairsCount === 4) {
+    if (+this.pairsCount === 4) {
       return 8;
     }
-    if (this.pairsCount === 10) {
+    if (+this.pairsCount === 10) {
       return 25;
     }
     return 15;
@@ -140,11 +147,11 @@ export class GameService {
 
   checkResult() {
     if (this.hasLost()) {
-      this.gameStatus.set('fail');
+      this.handleFail();
       return;
     }
     if (this.hasWin()) {
-      this.gameStatus.set('win');
+      this.handleWin();
       return;
     }
   }
@@ -156,5 +163,26 @@ export class GameService {
 
   getPairsCount() {
     return this.pairsCount;
+  }
+
+  updateBestScore() {
+    localStorage.setItem(`${DIFFICULTY[this.pairsCount]}-best`, String(this.score()));
+  }
+
+  handleFail() {
+    this.gameStatus.set('fail');
+  }
+
+  handleWin() {
+    this.gameStatus.set('win');
+    const savedScore = localStorage.getItem(`${DIFFICULTY[this.pairsCount]}-best`);
+    if (!savedScore) {
+      this.updateBestScore();
+      return;
+    }
+    if (this.score() >= Number(savedScore)) {
+      return;
+    }
+    this.updateBestScore();
   }
 }
