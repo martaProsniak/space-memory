@@ -11,6 +11,9 @@
     }
     @else {
       <div id="board" class="board">
+        @for (card of deck(); track $index) {
+          <card [card]="card" [index]="$index" (click)="flipCard(card)" />
+        }
         <div
           *ngFor="let card of deck(); index as i"
           id="card{{i}}" class="card"

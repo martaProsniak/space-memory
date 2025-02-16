@@ -40,16 +40,6 @@ main {
   border-radius: 10px;
 }
 
-.card {
-  height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  transform: scale(1);
-  transition: background-image 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
 .hud {
   width: fit-content;
   margin: auto;
