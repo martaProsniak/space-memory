@@ -1,6 +1,6 @@
 main {
   margin: auto;
-  width: clamp(3em, 80%, 20em);
+  width: clamp(280px, 80dvw, 600px);
   height: 100dvh;
   display: grid;
   grid-template-rows: 20% 1fr 15%;
@@ -13,7 +13,7 @@ main {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 33%);
   grid-template-rows: repeat(4, 1fr);
   grid-gap: var(--board-gap);
   justify-content: center;
@@ -22,12 +22,12 @@ main {
   margin: auto;
 }
 
-.board:has(.card:nth-last-child(n + 12)) {
+.board:has(card:nth-last-child(n + 12)) {
   grid-template-columns: repeat(3, 1fr);
   --board-gap: 0.75em;
 }
 
-.board:has(.card:nth-last-child(n + 18)) {
+.board:has(card:nth-last-child(n + 18)) {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   --board-gap: 0.5em;

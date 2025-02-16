@@ -1,0 +1,7 @@
+<div
+  id="card{{index}}" class="card"
+  [style.background-image]=
+    "card.isFlipped ? card.faceUrl : card.backUrl"
+  [style.visibility]="card.isHidden ? 'hidden' : 'visible'"
+>
+</div>
