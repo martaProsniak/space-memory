@@ -1,44 +1,56 @@
 main {
   margin: auto;
-  width: clamp(280px, 80dvw, 600px);
+  width: clamp(20em, 80dvw, 37.5em);
   height: 100dvh;
   display: grid;
   grid-template-rows: 20% 1fr 15%;
+  grid-gap: 2em;
 }
 
 .board-wrapper {
-  background: #050505;
+  background: #171717;
   padding: 1em;
+  display: flex;
+  align-items: center;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(2, 33%);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 50%);
+  grid-auto-rows: 1fr;
   grid-gap: var(--board-gap);
   justify-content: center;
   width: 100%;
   height: 100%;
   margin: auto;
+
+  @media screen and (min-width: 26.625em) {
+    max-height: 31.25em;
+    grid-template-columns: repeat(2, 33%);
+  }
 }
 
 .board:has(card:nth-last-child(n + 12)) {
   grid-template-columns: repeat(3, 1fr);
   --board-gap: 0.75em;
+
+  @media screen and (min-width: 26.625em) {
+    grid-template-columns: repeat(4, 1fr);
+    --board-gap: 1em;
+  }
 }
 
 .board:has(card:nth-last-child(n + 18)) {
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  --board-gap: 0.5em;
+  --board-gap: 1em;
+
+  @media screen and (min-width: 26.625em) {
+    grid-template-columns: repeat(5, 1fr);
+    --board-gap: 1em;
+  }
 }
 
-.border {
-  -webkit-box-shadow: 1px 1px 10px 0 var(--color-blue);
-  -moz-box-shadow: 1px 1px 10px 0 var(--color-blue);
-  box-shadow: 1px 1px 10px 0 var(--color-blue);
-  border-radius: 10px;
-}
+
 
 .hud {
   width: fit-content;

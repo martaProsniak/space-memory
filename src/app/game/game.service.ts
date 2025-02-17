@@ -2,7 +2,7 @@ import {Injectable, signal, WritableSignal} from '@angular/core';
 import {Game} from './game.model';
 import {Card, PairsCount} from './types';
 
-const DIFFICULTY: Record<PairsCount, string> = {
+export const DIFFICULTY: Record<PairsCount, string> = {
   4: 'easy',
   6: 'normal',
   10: 'hard'
@@ -41,10 +41,10 @@ export class GameService {
   }
 
   getTurnCount() {
-    if (+this.pairsCount === 4) {
+    if (Number(this.pairsCount) === 4) {
       return 8;
     }
-    if (+this.pairsCount === 10) {
+    if (Number(this.pairsCount) === 10) {
       return 25;
     }
     return 15;
@@ -138,11 +138,11 @@ export class GameService {
   }
 
   hasLost() {
-    return this.turnCount() < 1 && this.matchCount < this.game!.maxPairsCount;
+    return this.turnCount() < 1 && this.matchCount < Number(this.pairsCount);
   }
 
   hasWin() {
-    return this.matchCount === this.game!.maxPairsCount;
+    return this.matchCount === Number(this.pairsCount);
   }
 
   checkResult() {
