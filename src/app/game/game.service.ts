@@ -145,6 +145,7 @@ export class GameService {
   }
 
   checkResult() {
+    console.log(this.matchCount, Number(this.pairsCount));
     if (this.hasLost()) {
       this.handleFail();
       return;
