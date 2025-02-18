@@ -16,7 +16,6 @@ export class GameService {
   private firstFlippedCard: Card | null = null;
   private secondFlippedCard: Card | null = null;
   private deck: WritableSignal<Card[]> = signal([]);
-  private timeout = 750;
   pairsCount: PairsCount = 6;
   private matchCount = 0;
   score = signal(0);
@@ -106,7 +105,7 @@ export class GameService {
       this.increaseScore();
       this.matchCount++;
       this.resetFlippedCards();
-    }, this.timeout);
+    }, 300);
   }
 
   handleNoMatch() {
@@ -123,7 +122,7 @@ export class GameService {
       this.turnCount.update((turnCount) => turnCount - 1);
       this.isBonusTurn.set(false);
       this.resetFlippedCards();
-    }, this.timeout);
+    }, 750);
   }
 
   increaseScore() {

@@ -2,6 +2,7 @@
   id="card{{index}}" class="card {{card.isFlipped ? 'flipped' : ''}}"
   [style.background-image]=
     "card.isFlipped ? card.faceUrl : card.backUrl"
-  [style.visibility]="card.isHidden ? 'hidden' : 'visible'"
+  [@visibleHidden]="card.isHidden ? 'hidden' : 'visible'"
+  [@flippedCard]="card.isFlipped ? 'face' : 'back'"
 >
 </div>
