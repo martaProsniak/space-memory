@@ -24,17 +24,18 @@ input[type="radio"] {
   width: 0;
 }
 
-input[type="radio"]:checked ~ label {
-  background-color: blue;
-}
-
 label {
   display: inline-block;
-  background-color: hotpink;
+  background-color: var(--color-blue);
   padding: 8px;
   transition: background-color 0.2s ease;
+  cursor: pointer;
 
   &:hover {
-    background-color: orange;
+    background-color: var(--color-blue-interaction);
   }
+}
+
+input[type="radio"]:checked ~ label {
+  background-color: var(--color-blue-light);
 }

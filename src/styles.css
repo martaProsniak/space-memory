@@ -1,5 +1,7 @@
 :root {
-  --color-blue: #217a8a;
+  --color-blue: hsl(189, 61%, 34%);
+  --color-blue-light: hsl(from var(--color-blue) h s 60%);
+  --color-blue-interaction: hsl(from var(--color-blue) h s l / 50%);
   --board-gap: 1em;
 }
 
@@ -13,4 +15,8 @@ body {
   background-color: #19191a;
   color: white;
   font-size: 16px;
+  font-family: "Orbitron", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
