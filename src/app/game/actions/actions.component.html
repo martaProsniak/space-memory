@@ -1,9 +1,17 @@
 <div class="actions">
   <button (click)="restartGame()">New game</button>
-  <label for="difficulty">Difficulty</label>
-    <select id="difficulty" name="difficulty" [(ngModel)]="difficulty" (change)="handleChange()">
-      <option [value]="'easy'">Easy</option>
-      <option [value]="'normal'">Normal</option>
-      <option [value]="'hard'">Hard</option>
-    </select>
+  <div class="radio-toolbar">
+    <div>
+      <input type="radio" id="easy" [(ngModel)]="difficulty" value="easy" (change)="handleChange()">
+      <label for="easy">Easy</label>
+    </div>
+    <div>
+      <input type="radio" id="normal" [(ngModel)]="difficulty" value="normal" (change)="handleChange()">
+      <label for="normal">Normal</label>
+    </div>
+    <div>
+      <input type="radio" id="hard" [(ngModel)]="difficulty" value="hard" (change)="handleChange()">
+      <label for="hard">Hard</label>
+    </div>
+  </div>
 </div>

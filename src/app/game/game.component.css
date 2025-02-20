@@ -16,7 +16,7 @@ main {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: repeat(2, 40%);
   grid-auto-rows: 1fr;
   grid-gap: var(--board-gap);
   justify-content: center;
@@ -26,7 +26,7 @@ main {
 
   @media screen and (min-width: 26.625em) {
     max-height: 31.25em;
-    grid-template-columns: repeat(2, 30%);
+    grid-template-columns: repeat(2, 25%);
   }
 }
 
