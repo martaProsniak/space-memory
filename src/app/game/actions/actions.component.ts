@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from '../game.service';
-import {PairsCount} from '../types';
+import {Difficulty, PairsCount} from '../types';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -12,19 +12,19 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './actions.component.css'
 })
 export class ActionsComponent implements OnInit {
-  pairsCount: PairsCount
+  difficulty: Difficulty;
 
   constructor(private gameService: GameService) {
-    this.pairsCount = this.gameService.getPairsCount();
+    this.difficulty = this.gameService.getDifficulty();
   }
 
   ngOnInit() {
-    const pairCount = localStorage.getItem('pairs-count');
-    if (!pairCount) {
+    const difficulty = localStorage.getItem('difficulty') as Difficulty | null;
+    if (!difficulty) {
       return;
     }
-    this.pairsCount = Number(pairCount) as PairsCount;
-    this.gameService.setPairsCount(this.pairsCount);
+    this.difficulty = difficulty;
+    this.gameService.setDifficulty(difficulty as Difficulty);
   }
 
   restartGame() {
@@ -32,7 +32,7 @@ export class ActionsComponent implements OnInit {
   }
 
   handleChange() {
-    this.gameService.setPairsCount(this.pairsCount);
-    localStorage.setItem('pairs-count', `${this.pairsCount}`);
+    this.gameService.setDifficulty(this.difficulty);
+    localStorage.setItem('difficulty', `${this.difficulty}`);
   }
 }

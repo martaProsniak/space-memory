@@ -1,9 +1,9 @@
 <div class="actions">
   <button (click)="restartGame()">New game</button>
   <label for="difficulty">Difficulty</label>
-    <select id="difficulty" name="difficulty" [(ngModel)]="pairsCount" (change)="handleChange()">
-      <option [value]="4">Easy</option>
-      <option [value]="6">Normal</option>
-      <option [value]="10">Hard</option>
+    <select id="difficulty" name="difficulty" [(ngModel)]="difficulty" (change)="handleChange()">
+      <option [value]="'easy'">Easy</option>
+      <option [value]="'normal'">Normal</option>
+      <option [value]="'hard'">Hard</option>
     </select>
 </div>

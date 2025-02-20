@@ -1,11 +1,17 @@
-import {Injectable, signal, WritableSignal} from '@angular/core';
+import {effect, Injectable, signal, WritableSignal} from '@angular/core';
 import {Game} from './game.model';
-import {Card, PairsCount} from './types';
+import {Card, Difficulty, PairsCount} from './types';
 
-export const DIFFICULTY: Record<PairsCount, string> = {
+export const DIFFICULTY: Record<PairsCount, Difficulty> = {
   4: 'easy',
   6: 'normal',
   10: 'hard'
+}
+
+export const difficultyToPairsCountMap: Record<Difficulty, PairsCount> = {
+  easy: 4,
+  normal: 6,
+  hard: 10
 }
 
 @Injectable({
@@ -16,7 +22,8 @@ export class GameService {
   private firstFlippedCard: Card | null = null;
   private secondFlippedCard: Card | null = null;
   private deck: WritableSignal<Card[]> = signal([]);
-  pairsCount: PairsCount = 6;
+  private difficulty: Difficulty = 'normal';
+  private pairsCount: PairsCount = difficultyToPairsCountMap[this.difficulty];
   private matchCount = 0;
   score = signal(0);
   turnCount = signal(0);
@@ -156,13 +163,14 @@ export class GameService {
     }
   }
 
-  setPairsCount(count: PairsCount) {
-    this.pairsCount = count;
-    this.startNewGame();
+  getDifficulty() {
+    return this.difficulty;
   }
 
-  getPairsCount() {
-    return this.pairsCount;
+  setDifficulty(difficulty: Difficulty) {
+    this.difficulty = difficulty;
+    this.pairsCount = difficultyToPairsCountMap[this.difficulty];
+    this.startNewGame();
   }
 
   updateBestScore() {

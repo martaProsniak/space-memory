@@ -7,3 +7,5 @@ export interface Card {
 }
 
 export type PairsCount = 4 | 6 | 10
+
+export type Difficulty = 'easy' | 'normal' | 'hard';
