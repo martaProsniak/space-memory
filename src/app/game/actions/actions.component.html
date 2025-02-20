@@ -1,5 +1,4 @@
 <div class="actions">
-  <button (click)="restartGame()">New game</button>
   <div class="radio-toolbar">
     <div>
       <input type="radio" id="easy" [(ngModel)]="difficulty" value="easy" (change)="handleChange()">
@@ -14,4 +13,5 @@
       <label for="hard">Hard</label>
     </div>
   </div>
+  <button (click)="restartGame()">New game</button>
 </div>

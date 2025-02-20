@@ -8,8 +8,12 @@
   cursor: pointer;
   box-shadow: 2px 2px 4px #000000, -2px -2px 4px var(--color-blue);
 
-  &:hover {
-    filter: brightness(120%);
+  &:hover, &:focus {
+    filter: brightness(130%);
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 

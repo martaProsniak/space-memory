@@ -9,7 +9,6 @@ import {CardComponent} from './card/card.component';
 @Component({
   selector: 'app-game',
   imports: [
-    NgForOf,
     ActionsComponent,
     ProgressComponent,
     CardComponent,

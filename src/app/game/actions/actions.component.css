@@ -1,5 +1,14 @@
 .actions {
-  display: flex;
+  display: block;
+  max-width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+
+  @media screen and (min-width: 26.625em) {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+  }
 }
 
 .radio-toolbar {
@@ -16,6 +25,11 @@
     border-bottom-right-radius: 10px;
     border-left: 1px solid black;
   }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--color-blue-light);
+    border-radius: 10px;
+  }
 }
 
 input[type="radio"] {
@@ -25,17 +39,46 @@ input[type="radio"] {
 }
 
 label {
-  display: inline-block;
   background-color: var(--color-blue);
   padding: 8px;
   transition: background-color 0.2s ease;
   cursor: pointer;
+  display: inline-block;
+  font-size: 0.8em;
+  line-height: 1.5em;
 
-  &:hover {
+  &:hover, &:focus {
     background-color: var(--color-blue-interaction);
   }
 }
 
 input[type="radio"]:checked ~ label {
   background-color: var(--color-blue-light);
+  color: black;
+
+  &:hover, &:focus {
+    background-color: hsl(from var(--color-blue-light) h s 80%);
+    color: black;
+  }
+}
+
+button {
+  background-color: var(--color-blue);
+  border: 1px solid var(--color-blue-interaction);
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 0.8em;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  margin-top: 1.5em;
+
+  &:hover, &:focus {
+    background-color: var(--color-blue-interaction);
+    box-shadow: 0 0 0 2px var(--color-blue-light);
+  }
+
+  @media screen and (min-width: 26.625em) {
+    margin: 0;
+  }
 }

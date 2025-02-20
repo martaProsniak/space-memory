@@ -1,5 +1,6 @@
 <div
   id="card{{index}}" class="card {{card.isFlipped ? 'flipped' : ''}}"
+  tabindex="1"
   [style.background-image]=
     "card.isFlipped ? card.faceUrl : card.backUrl"
   [@visibleHidden]="card.isHidden ? 'hidden' : 'visible'"
