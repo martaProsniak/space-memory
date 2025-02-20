@@ -10,7 +10,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   styleUrl: './card.component.css',
   animations: [
     trigger('visibleHidden', [
-      state('visible', style({opacity: 1, transform: 'scale(0.9) rotate(0)'})),
+      state('visible', style({opacity: 1, transform: 'scale(1) rotate(0)'})),
       state('hidden', style({opacity: 0, transform: 'scale(0.5) rotate(15deg)'})),
       transition('visible => hidden', animate('0.5s ease-out')),
     ]),
