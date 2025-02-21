@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from '../game.service';
 import {Difficulty, PairsCount} from '../types';
 import {FormsModule} from '@angular/forms';
+import {StartGameBtnComponent} from '../start-game-btn/start-game-btn.component';
 
 @Component({
   selector: 'user-actions',
   imports: [
-    FormsModule
+    FormsModule,
+    StartGameBtnComponent
   ],
   templateUrl: './actions.component.html',
   styleUrl: './actions.component.css'
@@ -25,10 +27,6 @@ export class ActionsComponent implements OnInit {
     }
     this.difficulty = difficulty;
     this.gameService.setDifficulty(difficulty as Difficulty);
-  }
-
-  restartGame() {
-    this.gameService.startNewGame();
   }
 
   handleChange() {

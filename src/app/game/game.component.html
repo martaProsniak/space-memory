@@ -6,10 +6,21 @@
     </section>
     <div class="board-wrapper">
       @if (progress.gameStatus() === 'win') {
-        <p>You won</p>
+        <div class="game-result">
+          <img src="/ship.png" alt="ship image">
+          <p>Congratulations!</p>
+          <p>You broke the alien lines in {{progress.score()}} turns!</p>
+          <p>Thanks to you the astronaut is back home!</p>
+          <start-game-btn text="Play again" />
+        </div>
       }
       @else if (progress.gameStatus() === 'fail') {
-        <p>You lost</p>
+        <div class="game-result">
+          <img src="/alien-small.png" alt="alien image">
+          <p>Oh no! You've crashed escaping the aliens!</p>
+          <p>I's miracle you've survived!</p>
+          <start-game-btn text="Try again" />
+        </div>
       }
       @else {
         <div id="board" class="board">

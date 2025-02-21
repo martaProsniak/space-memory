@@ -5,7 +5,7 @@ header {
 
 h1 {
   text-align: center;
-  text-shadow: 0 -1px 40px var(--color-blue-light);
+  text-shadow: 0 0 20px var(--color-blue-light);
 
   @media screen and (min-width: 26.625em) {
     font-size: 2em;
@@ -16,11 +16,18 @@ h1 {
   }
 
   & a {
+    transition: color 0.2s ease-in;
     color: white;
     text-decoration: none;
 
     &:visited {
       color: white;
     }
+
+    &:hover {
+      color: var(--color-blue-light);
+      text-shadow: 1px 1px 1px black;
+    }
+
   }
 }

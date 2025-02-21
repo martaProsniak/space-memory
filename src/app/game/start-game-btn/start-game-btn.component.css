@@ -1,0 +1,25 @@
+button {
+  background-color: transparent;
+  border: 1px solid var(--color-blue-interaction);
+  border-radius: 10px;
+  padding: 0.5em 0.75em;
+  font-size: 0.8em;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  margin-top: 1.5em;
+
+  &:hover, &:focus {
+    background-color: var(--color-blue-interaction);
+    box-shadow: 0 0 0 2px var(--color-blue-light);
+  }
+
+  @media screen and (min-width: 26.625em) {
+    margin-top: 0;
+    font-size: 1em;
+  }
+}
+
+.colored-bg {
+  background-color: var(--color-blue);
+}

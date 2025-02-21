@@ -6,6 +6,7 @@ import {ActionsComponent} from './actions/actions.component';
 import {ProgressComponent} from './progress/progress.component';
 import {CardComponent} from './card/card.component';
 import {GameHeaderComponent} from './game-header/game-header.component';
+import {StartGameBtnComponent} from './start-game-btn/start-game-btn.component';
 
 @Component({
   selector: 'app-game',
@@ -14,6 +15,7 @@ import {GameHeaderComponent} from './game-header/game-header.component';
     ProgressComponent,
     CardComponent,
     GameHeaderComponent,
+    StartGameBtnComponent,
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'

@@ -14,7 +14,7 @@ import {GameHeaderComponent} from '../game/game-header/game-header.component';
   animations: [
     trigger('flyIn', [
       state('hidden', style({transform: 'translateY(100vh)'})),
-      state('visible', style({transform: 'translateY(1em)'})),
+      state('visible', style({transform: 'translateY(0)'})),
       transition('hidden => visible', animate('2s ease-in-out')),
     ]),
   ]
