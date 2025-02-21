@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import {GameService} from '../game.service';
-import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'game-progress',
-  imports: [
-    NgIf
-  ],
+  imports: [],
   templateUrl: './progress.component.html',
   styleUrl: './progress.component.css'
 })
