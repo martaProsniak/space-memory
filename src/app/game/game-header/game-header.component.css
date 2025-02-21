@@ -1,19 +1,20 @@
 header {
   max-width: fit-content;
   margin: 0 auto;
-  padding: 1.5em 0;
+  padding: 2em 0;
 }
 
 h1 {
   text-align: center;
   text-shadow: 0 0 20px var(--color-blue-light);
+  font-size: 2em;
 
   @media screen and (min-width: 26.625em) {
-    font-size: 2em;
+    font-size: 2.5em;
   }
 
   @media screen and (min-width: 64.0625em) {
-    font-size: 2.5em;
+    font-size: 3em;
   }
 
   & a {
