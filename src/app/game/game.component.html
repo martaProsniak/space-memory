@@ -1,21 +1,24 @@
-<main>
-  <section class="hud">
-    <game-progress />
-  </section>
-  <div class="board-wrapper">
-    @if (progress.gameStatus() === 'win') {
-      <p>You won</p>
-    }
-    @else if (progress.gameStatus() === 'fail') {
-      <p>You lost</p>
-    }
-    @else {
-      <div id="board" class="board">
-        @for (card of deck(); track $index) {
-          <card [card]="card" [index]="$index" (click)="flipCard(card)" />
-        }
-      </div>
-    }
-  </div>
-  <user-actions />
-</main>
+<div class="container">
+  <main>
+    <section class="hud">
+      <game-header />
+      <game-progress />
+    </section>
+    <div class="board-wrapper">
+      @if (progress.gameStatus() === 'win') {
+        <p>You won</p>
+      }
+      @else if (progress.gameStatus() === 'fail') {
+        <p>You lost</p>
+      }
+      @else {
+        <div id="board" class="board">
+          @for (card of deck(); track $index) {
+            <card [card]="card" [index]="$index" (click)="flipCard(card)" />
+          }
+        </div>
+      }
+    </div>
+    <user-actions />
+  </main>
+</div>

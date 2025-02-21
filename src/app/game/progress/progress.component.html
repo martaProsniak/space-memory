@@ -1,6 +1,24 @@
 <div class="progress">
-  <div>Score: {{progress.score()}}</div>
-  <div>Turns left: {{progress.turnCount()}}</div>
-  <div *ngIf="progress.hasBonusTurn()">Bonus turn!</div>
-  <div>Status: {{progress.gameStatus()}}</div>
+  <div class="score">
+    <div>
+      <p>Score:</p>
+      <p> {{progress.score()}}</p>
+    </div>
+    @if (progress.bestScore()) {
+      <div>
+        <p>Best:</p>
+        <p>{{progress.bestScore()}}</p>
+      </div>
+    }
+  </div>
+  <div class="turns">
+    <div>
+      <p>Turns left:</p>
+      <p
+        [class.show-bonus]="progress.hasBonusTurn()"
+      >
+        {{progress.turnCount()}}
+      </p>
+    </div>
+  </div>
 </div>

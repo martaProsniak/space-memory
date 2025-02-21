@@ -5,6 +5,7 @@ import {NgForOf} from '@angular/common';
 import {ActionsComponent} from './actions/actions.component';
 import {ProgressComponent} from './progress/progress.component';
 import {CardComponent} from './card/card.component';
+import {GameHeaderComponent} from './game-header/game-header.component';
 
 @Component({
   selector: 'app-game',
@@ -12,6 +13,7 @@ import {CardComponent} from './card/card.component';
     ActionsComponent,
     ProgressComponent,
     CardComponent,
+    GameHeaderComponent,
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
