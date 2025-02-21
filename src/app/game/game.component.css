@@ -3,15 +3,22 @@ main {
   width: clamp(20em, 80dvw, 37.5em);
   height: 100dvh;
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
-  grid-gap: 1em;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-gap: 0.5em;
+  background: var(--color-black-semi-transparent);
+  padding: 0 2em;
+
+  @media screen and (min-width: 26.625em) {
+    grid-gap: 1em;
+    padding: 0 2em;
+  }
 }
 
 .board-wrapper {
-  background: #171717;
   padding: 1em;
   display: flex;
   align-items: center;
+  border-radius: 10px;
 }
 
 .board {
@@ -51,10 +58,22 @@ main {
   }
 }
 
-
-
 .hud {
-  width: fit-content;
-  margin: auto;
   padding: 1em;
+  max-width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-blue-light);
+  margin: 0.5em 0 1em;
+  text-shadow: 2px 2px 0 var(--color-blue-interaction);
+
+  @media screen and (min-width: 26.625em) {
+    font-size: 2em;
+  }
+
+  @media screen and (min-width: 64.0625em) {
+    font-size: 2.5em;
+  }
 }

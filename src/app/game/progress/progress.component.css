@@ -1,3 +1,57 @@
 .progress {
   display: flex;
+  gap: 2em;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8em;
+
+  @media screen and (min-width: 26.625em) {
+    font-size: 1em;
+  }
+
+  & > div {
+    display: flex;
+    gap: 2em;
+
+    & p {
+      margin: 0.5em 0;
+      text-shadow: 2px 2px 0 var(--color-blue);
+      font-weight: 600;
+    }
+
+    & p:last-child {
+      text-align: end;
+      font-weight: 800;
+      font-size: 120%;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+.turns {
+  justify-self: flex-end;
+  width: 50%;
+
+  & > div {
+    width: 100%;
+    text-align: end;
+  }
+}
+
+.turns p > span {
+  display: inline-block;
+  margin-inline-start: 2em;
+}
+
+.show-bonus::before {
+  content: 'Extra turn!';
+  width: 1em;
+  height: 1em;
+  font-size: 75%;
+  border-radius: 10px;
+  margin-right: 0.5em;
+  text-shadow: 1px 1px 0 var(--color-blue-light);
+  color: #adff69;
+  letter-spacing: initial;
 }

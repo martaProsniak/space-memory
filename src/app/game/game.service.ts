@@ -28,11 +28,21 @@ export class GameService {
   score = signal(0);
   turnCount = signal(0);
   isBonusTurn = signal(false);
+  bestScore = signal(0);
   canFlip = true;
   gameStatus: WritableSignal<'pending' | 'fail' | 'win'> = signal('pending');
 
   constructor() {
     this.startNewGame();
+  }
+
+  getBestScore() {
+    const savedScore = localStorage.getItem(`${this.difficulty}-best`);
+    if (!savedScore) {
+      this.bestScore.set(0);
+      return;
+    }
+    this.bestScore.set(Number(savedScore));
   }
 
   startNewGame() {
@@ -42,6 +52,7 @@ export class GameService {
     this.turnCount.set(this.getTurnCount());
     this.gameStatus.set('pending');
     this.isBonusTurn.set(false);
+    this.getBestScore();
     this.canFlip = true;
     this.matchCount = 0;
   }
@@ -66,6 +77,7 @@ export class GameService {
       turnCount: this.turnCount,
       hasBonusTurn: this.isBonusTurn,
       gameStatus: this.gameStatus,
+      bestScore: this.bestScore,
     };
   }
 
