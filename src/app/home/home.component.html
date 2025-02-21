@@ -1,8 +1,9 @@
+<div id="backdrop" (click)="speedUpAnimation()"></div>
 <section>
   <div>
     <game-header />
   </div>
-  <div [@flyIn]="animationState" id="intro" class="intro">
+  <div #intro class="intro">
     <div class="imgBox">
       <img class="image" src="/astronaut.png" alt="astronaut" />
     </div>
