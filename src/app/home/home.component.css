@@ -1,4 +1,4 @@
-section {
+main {
   max-height: 100dvh;
   min-height: 100vh;
   background-color: var(--color-black-semi-transparent);
@@ -38,39 +38,51 @@ img {
   height: 100%;
 }
 
-button {
-  background-color: var(--color-blue);
-  border: 1px solid var(--color-blue-interaction);
-  border-radius: 10px;
-  cursor: pointer;
-  color: white;
-  outline: none;
-  box-shadow: 0 0 2px 1px var(--color-blue-light);
-  margin-top: 1em;
-  padding: 0;
-
-  &:hover, &:focus {
-    background-color: var(--color-blue-interaction);
-    box-shadow: 0 0 0 2px var(--color-blue-light);
-  }
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  font-size: 1em;
-  text-shadow: 1px 1px 0 var(--color-blue-light);
-  display: block;
-  padding: 0.5em 1em;
-
-  &:visited {
-    color: white;
-  }
-}
 
 #backdrop {
   width: 100dvw;
   height: 100dvh;
   position: absolute;
   top: 0;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 1em;
+  justify-content: space-around;
+
+  & button {
+    background-color: var(--color-blue);
+    border: 1px solid var(--color-blue-interaction);
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    box-shadow: 0 0 2px 1px var(--color-blue-light);
+    margin-top: 1em;
+    padding: 0;
+    min-width: 8ch;
+
+    &:first-child {
+      background-color: var(--color-black-semi-transparent);
+    }
+
+    &:hover, &:focus {
+      background-color: var(--color-blue-interaction);
+      box-shadow: 0 0 0 2px var(--color-blue-light);
+    }
+
+    & a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      text-shadow: 1px 1px 0 var(--color-blue-light);
+      display: block;
+      padding: 0.5em 1em;
+
+      &:visited {
+        color: white;
+      }
+    }
+  }
 }
