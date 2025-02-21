@@ -1,9 +1,8 @@
-<div id="backdrop" (click)="speedUpAnimation()"></div>
 <main>
   <div>
     <game-header />
   </div>
-  <section #intro class="intro">
+  <section class="intro">
     <div class="imgBox">
       <img class="image" src="/astronaut.png" alt="astronaut" />
     </div>
@@ -17,12 +16,8 @@
       <img class="image" src="/alien.png" alt="alien" />
     </div>
     <div class="buttons-wrapper">
-      <button>
         <a routerLink="/credits">Credits</a>
-      </button>
-      <button>
         <a routerLink="/game">Play</a>
-      </button>
     </div>
   </section>
 </main>
