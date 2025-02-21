@@ -3,7 +3,8 @@
   tabindex="1"
   [style.background-image]=
     "card.isFlipped ? card.faceUrl : card.backUrl"
-  [@visibleHidden]="card.isHidden ? 'hidden' : 'visible'"
-  [@flippedCard]="card.isFlipped ? 'face' : 'back'"
+  [style.background-color]="card.isFlipped ? '#1a1d25' : 'rgb(114 226 239)'"
+  [style.transform]="card.isHidden ? 'scale(0.5) rotate(15deg)' : 'scale(1) rotate(0)'"
+  [style.opacity]="card.isHidden ? 0 : 1"
 >
 </div>
