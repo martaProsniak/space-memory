@@ -5,7 +5,7 @@ main {
   padding: 0 1em;
 }
 
-.intro{
+.intro {
   width: fit-content;
   position: fixed;
   inset: 0;
@@ -14,6 +14,10 @@ main {
   font-size: 1em;
   height: fit-content;
   padding: 0 1em;
+
+  animation: fadeIn;
+  animation-duration: 2s;
+  transition-timing-function: cubic-bezier(0.550, 0.085, 0.680, 0.530);
 }
 
 p {
@@ -69,4 +73,13 @@ img {
         color: black;
       }
     }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
