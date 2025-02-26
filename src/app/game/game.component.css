@@ -76,4 +76,9 @@ main {
     width: 2em;
     height: 2em;
   }
+
+  & start-game-btn {
+    display: block;
+    margin-block-start: 2.5em;
+  }
 }
